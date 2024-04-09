@@ -16,29 +16,15 @@ public class VersicherungEntity {
     @Column(name = "Tarif")
     private String tarif;
 
-    // Getter und Setter
-
     public int getVersicherungsID() {
         return versicherungsID;
-    }
-
-    public void setVersicherungsID(int versicherungsID) {
-        this.versicherungsID = versicherungsID;
     }
 
     public String getSparte() {
         return sparte;
     }
 
-    public void setSparte(String sparte) {
-        this.sparte = sparte;
-    }
-
     public String getTarif() {
         return tarif;
-    }
-
-    public void setTarif(String tarif) {
-        this.tarif = tarif;
     }
 }
