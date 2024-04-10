@@ -10,7 +10,6 @@ import java.util.List;
 public class PfefferminziaService {
     @Resource
     PfefferminziaRepos pfefferminziaRepos;
-
     public List<KundenEntity> getAll() {
 
         return pfefferminziaRepos.findAll();
