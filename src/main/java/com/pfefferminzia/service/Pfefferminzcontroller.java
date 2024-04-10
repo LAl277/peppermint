@@ -17,7 +17,6 @@ public class Pfefferminzcontroller {
     PfefferminziaService pfefferminziaService;
     @GetMapping("/getKunden")
     public ResponseEntity<List<KundenEntity>> getKunden() {
-        System.out.println("jo");
         List<KundenEntity> kundenEntityList = pfefferminziaService.getAll();
         return ResponseEntity.ok().body(kundenEntityList);
     }
