@@ -1,17 +1,24 @@
 package com.pfefferminzia.service;
 
 import com.pfefferminzia.Entity.KundenEntity;
-import jakarta.annotation.Resource;
+import com.pfefferminzia.Entity.VersicherungsvertraegeEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class PfefferminziaService {
-    @Resource
-    PfefferminziaRepos pfefferminziaRepos;
-    public List<KundenEntity> getAll() {
+    @Autowired
+    PfefferminziaKundenRepos pfefferminziaKundenRepos;
 
-        return pfefferminziaRepos.findAll();
+    public List<KundenEntity> getAllKunden() {
+
+        return pfefferminziaKundenRepos.findAll();
+    }
+
+    public List<KundenEntity> findeKundenMitVersicherung(long  versicherungsId) {
+        return pfefferminziaKundenRepos.findKundenByVersicherungsId(versicherungsId);
+
     }
 }

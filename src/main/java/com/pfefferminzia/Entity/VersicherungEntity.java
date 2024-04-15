@@ -3,7 +3,7 @@ package com.pfefferminzia.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Versicherung")
+@Table(name = "Versicherungen")
 public class VersicherungEntity {
 
     @Id
@@ -15,6 +15,18 @@ public class VersicherungEntity {
 
     @Column(name = "Tarif")
     private String tarif;
+
+    public void setVersicherungsID(int versicherungsID) {
+        this.versicherungsID = versicherungsID;
+    }
+
+    public void setSparte(String sparte) {
+        this.sparte = sparte;
+    }
+
+    public void setTarif(String tarif) {
+        this.tarif = tarif;
+    }
 
     public int getVersicherungsID() {
         return versicherungsID;

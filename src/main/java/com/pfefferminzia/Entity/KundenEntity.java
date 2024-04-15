@@ -8,11 +8,11 @@ import jakarta.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name="kunden")
+@Table(name="Kunden")
 public class KundenEntity {
     @Id
     @Column(name = "KundenID")
-    private Long kundenID;
+    private Long kundenId;
     @Column(name = "Vorname")
     private String vorname;
     @Column(name = "Nachname")
@@ -26,9 +26,10 @@ public class KundenEntity {
     @Column(name = "Telefonnummer")
     private String telefonnummer;
 
-    public Long getKundenID() {
-        return kundenID;
+    public Long getKundenId() {
+        return kundenId;
     }
+
 
     public String getVorname() {
         return vorname;
@@ -48,6 +49,34 @@ public class KundenEntity {
 
     public String getOrt() {
         return ort;
+    }
+
+    public void setKundenId(Long kundenId) {
+        this.kundenId = kundenId;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public void setGeburtsdatum(Date geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
+    }
+
+    public void setOrt(String ort) {
+        this.ort = ort;
+    }
+
+    public void setTelefonnummer(String telefonnummer) {
+        this.telefonnummer = telefonnummer;
     }
 
     public String getTelefonnummer() {

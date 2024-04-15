@@ -4,7 +4,7 @@ create database if not exists BestandPfefferminzia;
 use BestandPfefferminzia;
 
 CREATE TABLE Kunden (
-    KundenID INT PRIMARY KEY,
+    KundenID INT PRIMARY KEY not null,
     Vorname VARCHAR(50),
     Nachname VARCHAR(50),
     Geburtsdatum DATE,
@@ -26,7 +26,7 @@ INSERT INTO Kunden (KundenID, Vorname, Nachname, Geburtsdatum, PLZ, Ort, Telefon
 (110, 'Marie', 'Schneider', '2070-10-10', '01234', 'Zehntendorf', '912345678');
 
 CREATE TABLE Versicherungen (
-    VersicherungsID INT PRIMARY KEY,
+    VersicherungsID INT PRIMARY KEY not null,
     Sparte VARCHAR(10),
     Tarif VARCHAR (20)
 );
@@ -43,17 +43,21 @@ INSERT INTO Versicherungen (VersicherungsID, Sparte, Tarif) VALUES
 (19, 'Rentenversicherung', 'Silber'),
 (20, 'Investmentfonds', 'Diamant');
 
+
 CREATE TABLE Versicherungsvertraege (
-  VertragsID INT PRIMARY KEY,
+  VertragsID INT PRIMARY KEY not null,
   Vv_KundenID INT,
   Vv_VersicherungsID INT,
   Vertragsbeginn DATE,
   Vertragsende DATE,
-  CONSTRAINT fk_KundenID FOREIGN KEY (Vv_KundenID) REFERENCES Kunden(KundenID),
   CONSTRAINT fk_VersicherungsID FOREIGN KEY (Vv_VersicherungsID) REFERENCES Versicherungen(VersicherungsID)
+  on delete restrict
+  on update cascade,
+  CONSTRAINT fk_KundenID FOREIGN KEY (Vv_KundenID) REFERENCES Kunden(KundenID)
+  on delete restrict
+  on update cascade
 );
-	
-	
+
 
 INSERT INTO Versicherungsvertraege (VertragsID, Vv_KundenID, Vv_VersicherungsID, Vertragsbeginn, Vertragsende) VALUES
 (1, 101, 11, '2023-01-01', '2024-12-31'),
@@ -64,5 +68,5 @@ INSERT INTO Versicherungsvertraege (VertragsID, Vv_KundenID, Vv_VersicherungsID,
 (6, 106, 16, '2023-06-06', '2029-05-31'),
 (7, 107, 17, '2023-07-07', '2030-06-30'),
 (8, 108, 18, '2023-08-08', '2031-07-31'),
-(9, 109, 19, '2023-09-09', '2032-08-3'),
-(10,110, 20, '2023-10-10', '2032-11-07');
+(9, 109, 19, '2023-09-09', '2032-08-03'),
+(10,110, 20, '2023-10-10', '2032-11-09');
